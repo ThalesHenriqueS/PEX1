@@ -86,6 +86,21 @@
             text-align: center;
         }
 
+        img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    body {
+    font-size: 14px; /* Reduz o tamanho da fonte em telas menores */
+    }
+}
+
         section#apresentacao {
             background-color: #e9ecef;
             padding: 4em 2em;
@@ -114,6 +129,12 @@
             max-width: 700px;
             margin: 0 auto;
         }
+
+        .portfolio {
+    display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Se ajusta automaticamente */
+    gap: 20px;
+}
 
         
 .portfolio-box {
@@ -277,6 +298,29 @@
     font-style: italic;
 }
 
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column; /* Ajusta layouts com flexbox */
+    }
+    .header img {
+     width: 80%; /* Ajusta o tamanho das imagens */
+    }
+}
+
+/* Exemplo para tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .navbar {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 
     </style>
 </head>
@@ -285,7 +329,6 @@
         <img src="img/Plenitude.png" alt="Logo da Plenitude Produções" class="header-logo">
         <p>Fotografia e Produção de Vídeos</p>
     </header>
-    
 
     <nav>
         <a href="#apresentacao" onclick="showSection('apresentacao')">Quem Somos</a>
