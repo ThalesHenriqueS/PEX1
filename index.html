@@ -61,6 +61,26 @@
             transform: scale(1.1);
         }
 
+        #btnTopo {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99; /* Fica acima de outros elementos */
+            font-size: 16px;
+            background-color: #656D55;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #btnTopo:hover {
+            background-color: #16221B;
+        }
+
         section {
             padding: 3em 1.5em;
             text-align: center;
@@ -349,6 +369,8 @@
         <img class="modal-content" id="modalImg">
     </div>
 
+    <button id="btnTopo" onclick="voltarAoTopo()">↑ Topo</button>
+
     <script>
         let scale = 1; // Inicializa o nível de zoom
 
@@ -380,6 +402,22 @@
             
             modalImg.style.transform = `scale(${scale})`;
         });
+
+        function voltarAoTopo() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Exibir ou ocultar o botão com base na rolagem
+        window.onscroll = function() { mostrarBotaoTopo(); };
+
+        function mostrarBotaoTopo() {
+            const btn = document.getElementById("btnTopo");
+            if (document.documentElement.scrollTop > 300 || document.body.scrollTop > 300) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
