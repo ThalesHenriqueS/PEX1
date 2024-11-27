@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plenitude Produções</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdfdf8;
+        }
+
+        header, footer {
+            background-color: #16221B;
+            color: white;
+            text-align: center;
+            padding: 1.5em 0;
+        }
+
+        header p {
+    font-size: 1.2em;         
+    font-weight:lighter;        
+    color: #e0e0e0;         
+    margin-top: 10px;        
+    letter-spacing: 2px;      
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);  
+
+}
+
+
+        .header-logo {
+    width: 100%;             
+    max-width: 180px;        
+    display: block;          
+    margin: 0 auto 1em;       
+    height: auto;            
+}
+
+
+        nav {
+            background-color: #656D55;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1em;
+            margin: 0 5px;
+            display: inline-block;
+            transition: background 0.3s, transform 0.3s;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #16221B;
+            border-radius: 5px;
+            transform: scale(1.1);
+        }
+
+        section {
+            padding: 3em 1.5em;
+            text-align: center;
+        }
+
+        section#apresentacao {
+            background-color: #e9ecef;
+            padding: 4em 2em;
+            border-radius: 8px;
+            margin: 2em auto;
+            max-width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        section#apresentacao:hover {
+            transform: scale(1.03);
+        }
+
+        section#apresentacao h2 {
+            font-size: 2.5em;
+            color: #16221B;
+            margin-bottom: 0.5em;
+        }
+
+        section#apresentacao p {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        
+.portfolio-box {
+    background-color: #e9ecef; 
+    border: 2px solid #ddd; 
+    border-radius: 12px; 
+    padding: 2em;
+    margin: 2em auto;
+    max-width: 80%; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+}
+
+
+.portfolio-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+        .portfolio-container img {
+            width: 30%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-container img:hover {
+            transform: scale(1.05);
+        }
+
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            text-align: center;
+        }
+
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+            margin: auto;
+            display: block;
+            border-radius: 8px;
+            transform-origin: center center;
+            transition: transform 0.2s;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #bbb;
+        }
+
+        .services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 20px; 
+    text-align: center;
+}
+
+.service-item {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 1.5em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.service-icon {
+    width: 50px; 
+    height: auto;
+    margin-bottom: 0.1em; 
+    transition: transform 0.3s; 
+}
+
+.service-item:hover .service-icon {
+    transform: scale(1.1); 
+}
+
+
+.service-item:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+.service-item h3 {
+    margin-bottom: 0.5em;
+    font-size: 1.2em; 
+    color: #16221B; 
+}
+
+.service-description {
+    font-size: 1em; 
+    color: #555; 
+    margin-top: 0.5em;
+    font-style: italic;
+}
+
+
+#contato {
+    background-color: #f0f0f0;
+    padding: 3em 1.5em;
+    border-radius: 10px;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    background-color: #fdfdf8;
+    border: 2px solid #656D55;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    padding: 1.5em;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.contact-icon {
+    width: 40px;
+    height: auto;
+    margin-bottom: 1em;
+}
+
+.contact-card p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 0;
+    font-style: italic;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="img/Plenitude.png" alt="Logo da Plenitude Produções" class="header-logo">
+        <p>Fotografia e Produção de Vídeos</p>
+    </header>
+    
+
+    <nav>
+        <a href="#apresentacao" onclick="showSection('apresentacao')">Quem Somos</a>
+        <a href="#portfolio" onclick="showSection('portfolio')">Portfólio</a>
+        <a href="#servicos" onclick="showSection('servicos')">Serviços</a>
+        <a href="#contato" onclick="showSection('contato')">Contato</a>
+    </nav>
+
+    <section id="apresentacao" class="active">
+        <h2>Quem Somos?</h2>
+        <p>Somos um casal apaixonado por contemplar, analisar e registrar momentos singulares. Entendemos que a fotografia e a produção de vídeos vão além da captura de algo belo, mas representam sentimentos e emoções que eternizam histórias. Nosso objetivo é registrar momentos de forma sensível e realista, mantendo essas memórias vivas no coração dos nossos clientes.</p>
+    </section>
+
+    <section id="portfolio">
+        <h2>Portfólio</h2>
+        <div class="portfolio-box">
+            <div class="portfolio-container">
+                <img src="/img/portfolio/eventos1.jpg" alt="Evento 1" onclick="openModal(this)">
+                <img src="/img/portfolio/eventos2.jpg" alt="Evento 2" onclick="openModal(this)">
+                <img src="/img/portfolio/port1.jpg" alt="Projeto 1" onclick="openModal(this)">
+                <img src="/img/portfolio/port2.jpg" alt="Projeto 2" onclick="openModal(this)">
+                <img src="/img/portfolio/produtos1.jpg" alt="Produto 1" onclick="openModal(this)">
+                <img src="/img/portfolio/produtos2.jpg" alt="Produto 2" onclick="openModal(this)">
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos">
+        <h2>Nossos Serviços</h2>
+        <div class="services-container">
+            <div class="service-item">
+                <img src="img/serviços/camera.png" alt="Fotografia de Eventos" class="service-icon">
+                <h3>Fotografia de Eventos</h3>
+                <p class="service-description">Capturamos momentos únicos em eventos especiais.</p>
+            </div>
+            <div class="service-item">
+                <img src="img/serviços/video.png" alt="Fotografia de Eventos" class="service-icon">
+                <h3>Produção de Vídeos Publicitários</h3>
+                <p class="service-description">Vídeos criativos para promover sua marca ou produto.</p>
+            </div>
+            <div class="service-item">
+                <img src="img/serviços/estudio.png" alt="Fotografia de Eventos" class="service-icon">
+                <h3>Ensaios Fotográficos</h3>
+                <p class="service-description">Ensaios personalizados para registrar momentos únicos.</p>
+            </div>
+            <div class="service-item">
+                <img src="img/serviços/artes.png" alt="Fotografia de Eventos" class="service-icon">
+                <h3>Criação de Artes Personalizadas</h3>
+                <p class="service-description">Design gráfico exclusivo para sua empresa ou projeto.</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <div class="contact-container">
+            <div class="contact-card">
+                <img src="img/contato/email.png" alt="Email" class="contact-icon">
+                <p>producoesplenitude@gmail.com</p>
+            </div>
+            <div class="contact-card">
+                <img src="img/contato/telefone.png" alt="Telefone" class="contact-icon">
+                <p>(31) 98742-0204</p>
+            </div>
+            <div class="contact-card">
+                <img src="img/contato/local.png" alt="Endereço" class="contact-icon">
+                <p>Belo Horizonte-MG</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <footer>
+        <p>&copy; 2024 Plenitude Produções. Todos os direitos reservados.</p>
+    </footer>
+
+
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <script>
+        let scale = 1; // Inicializa o nível de zoom
+
+        function openModal(img) {
+            const modal = document.getElementById('myModal');
+            const modalImg = document.getElementById('modalImg');
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+            scale = 1; // Reseta o zoom ao abrir
+            modalImg.style.transform = `scale(${scale})`;
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        // Função de zoom
+        document.getElementById('myModal').addEventListener('wheel', function(event) {
+            event.preventDefault();
+            const modalImg = document.getElementById('modalImg');
+            const zoomFactor = 0.1;
+            
+            if (event.deltaY < 0) {
+                scale += zoomFactor; 
+            } else {
+                scale -= zoomFactor;
+                if (scale < 1) scale = 1;
+            }
+            
+            modalImg.style.transform = `scale(${scale})`;
+        });
+    </script>
+</body>
+</html>
